@@ -4,6 +4,7 @@ import { TodoStatus } from 'src/enums/todo-status.enum';
 
 export type TodoDocument = Todo & Document;
 
+
 @Schema({ timestamps: true })
 export class Todo {
   @Prop({ required: true })
@@ -18,6 +19,9 @@ export class Todo {
     default: TodoStatus.PENDING,
   })
   status: TodoStatus;
+
+  @Prop({ type: 'ObjectId', ref: 'User', required: true })
+  user: string;
 
   @Prop()
   createdAt?: Date;
